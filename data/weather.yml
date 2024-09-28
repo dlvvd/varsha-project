@@ -1,0 +1,22 @@
+version: "3.1"
+
+nlu:
+  - intent: get_weather_info
+    examples: |
+      - What is the weather of [Hyderabad](region) today
+      - What is the weather of [Japan](region) today
+      - How is the weather looking in [Beijing](region) today
+
+  - intent: get_weather_temperatures
+    examples: |
+      - What is the [maximum](gradient) temperature in [Hyderabad](region) today
+      - What is the [minimum](gradient) temperature in [Chennai](region) today
+
+  - intent: get_rainfall_measures
+    examples: |
+      - None
+
+  - intent: get_catastrophy_info
+    examples: |
+      - What are the physical catastrophe that can occur in [Hyderabad](region)
+      - What is the probability of an earthquake in [Hyderabad](region)

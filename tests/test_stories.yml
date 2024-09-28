@@ -1,0 +1,130 @@
+#### This file contains tests to evaluate that your bot behaves as expected.
+#### If you want to learn more, please see the docs: https://rasa.com/docs/rasa/testing-your-assistant
+
+stories:
+  - story: happy path 1
+    steps:
+      - user: |
+          hello there!
+        intent: greet
+      - action: utter_greet
+      - user: |
+          amazing
+        intent: mood_great
+      - action: utter_happy
+
+  - story: happy path 2
+    steps:
+      - user: |
+          hello there!
+        intent: greet
+      - action: utter_greet
+      - user: |
+          amazing
+        intent: mood_great
+      - action: utter_happy
+      - user: |
+          bye-bye!
+        intent: goodbye
+      - action: utter_goodbye
+
+  - story: sad path 1
+    steps:
+      - user: |
+          hello
+        intent: greet
+      - action: utter_greet
+      - user: |
+          not good
+        intent: mood_unhappy
+      - action: utter_cheer_up
+      - action: utter_did_that_help
+      - user: |
+          yes
+        intent: affirm
+      - action: utter_happy
+
+  - story: sad path 2
+    steps:
+      - user: |
+          hello
+        intent: greet
+      - action: utter_greet
+      - user: |
+          not good
+        intent: mood_unhappy
+      - action: utter_cheer_up
+      - action: utter_did_that_help
+      - user: |
+          not really
+        intent: deny
+      - action: utter_goodbye
+
+  - story: sad path 3
+    steps:
+      - user: |
+          hi
+        intent: greet
+      - action: utter_greet
+      - user: |
+          very terrible
+        intent: mood_unhappy
+      - action: utter_cheer_up
+      - action: utter_did_that_help
+      - user: |
+          no
+        intent: deny
+      - action: utter_goodbye
+
+  - story: say goodbye
+    steps:
+      - user: |
+          bye-bye!
+        intent: goodbye
+      - action: utter_goodbye
+
+  - story: bot challenge
+    steps:
+      - user: |
+          are you a bot?
+        intent: bot_challenge
+      - action: utter_iamabot
+
+  - story: introduction
+    steps:
+      - user: |
+          what is your name?
+          Can I know your name
+          What can I call you
+          How can I address you
+          What name do you go by?
+        intent: introduction
+      - action: action_give_introduction
+
+  - story: get_emission_categories
+    steps:
+      - user: |
+          Give me the top 10 emission categories
+          What are the bottom 25 emission categories
+          What emission categories can be categorized as top 10
+        intent: get_emission_categories
+      - action: action_get_emission_details
+
+  - story: get_rate_of_emission
+    steps:
+      - user: |
+          Get the top 10 emission categories where the rate of emissions are increasing
+          Inform me the bottom 10 emission categories which have decreasing emissions
+        intent: get_rate_of_emission
+      - action: action_get_rate_of_emission
+
+  - story: get_total_emissions_per_sector
+    steps: |
+      - user: |
+          What are the total emissions for residential-and-commercial-onsite-fuel-usage
+          What are the emissions for cropland-fires
+          How are the emissions in manure-management
+      
+  
+  
+

@@ -1,0 +1,47 @@
+version: "3.1"
+
+intents:
+  - get_emission_categories
+  - get_rate_of_emission
+  - get_total_emissions_per_sector
+
+actions:
+  - action_get_emission_details
+  - action_get_rate_of_emission
+  - action_get_total_emissions_per_sector
+
+entities:
+  - emissions_filter
+  - emissions_req_count
+  - emission_rate
+  - emission_sector
+
+slots:
+  emissions_req_count:
+    type: float
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: emissions_req_count
+
+  emissions_filter:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: emissions_filter
+
+  emission_rate:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: emission_rate
+
+  emission_sector:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: emission_sector
+

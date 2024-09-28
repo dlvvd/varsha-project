@@ -1,0 +1,48 @@
+version: "3.1"
+
+nlu:
+  - regex: emissions_req_count
+    examples: |
+      - \d{1,3}
+  - intent: get_emission_categories
+    examples: |
+      - How many emission categories are available with you?
+      - Can you give me all the emission categories available
+      - Can you help me with the emission categories available
+      - Can you detail the list of all the emission categories you know
+      - Can you give me the [top](emissions_filter) [5](emissions_req_count) emission categories
+      - Can you give me the [top](emissions_filter) [10](emissions_req_count) emission categories
+      - Detail me the [top](emissions_filter) [20](emissions_req_count) emissions
+      - Provide me [bottom](emissions_filter) [12](emissions_req_count) emission categories
+
+  - intent: get_rate_of_emission
+    examples: |
+      - Give me the [top](emissions_filter) [10](emissions_req_count) emission categories which are [reducing](emission_rate) emissions
+      - Get the [bottom](emissions_filter) [8](emissions_req_count) emission categories which are [increasing](emission_rate) emissions
+      - Can you provide us the [bottom](emissions_filter) [11](emissions_req_count) categories which are [increasing](emission_rate) yoy
+      - Are you aware of any emission categories that are [reducing](emission_rate) yoy
+      - Can you get me the list of emission categories that are [increasing](emission_rate) year by year
+
+  - intent: get_total_emissions_per_sector
+    examples: |
+      - What are the total emissions in [removals](emission_sector)
+      - How much emissions did [net-shrubgrass](emission_sector) cause
+      - How much of climate emissions did [forest-land-fires](emission_sector) cause
+      - How significant are the emissions for [shipping](emission_sector)
+      - Is [pulp-and-paper](emission_sector) causing any emissions?
+
+rules:
+  - rule: Provide emission category details to the user
+    steps:
+      - intent: get_emission_categories
+      - action: action_get_emission_details
+
+  - rule: Provide emission category details for rate of emission
+    steps:
+      - intent: get_rate_of_emission
+      - action: action_get_rate_of_emission
+
+  - rule: Provide emissions summary per sector
+    steps:
+      - intent: get_total_emissions_per_sector
+      - action: action_get_total_emissions_per_sector

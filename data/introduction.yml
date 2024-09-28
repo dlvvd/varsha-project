@@ -1,0 +1,35 @@
+version: "3.1"
+
+nlu:
+  - intent: introduction
+    examples: |
+      - What is your name?
+      - What can I call you?
+      - Do you have a name?
+      - Hey whats your name?
+      - Hey who are you?
+      - Hey can you introduce yourself.
+
+  - intent: what_can_you_do
+    examples: |
+      - Hey what can you do
+      - Can you tell me what can I ask you
+      - What functions can you perform
+      - What are you expert at?
+      - Can you tell me what can you perform?
+      - What are your abilities?
+
+
+rules:
+  - rule: Introduce yourself to the users
+    steps:
+      - intent: introduction
+      - action: action_give_introduction
+
+  - rule: Tell the user what can you do
+    steps:
+      - intent: what_can_you_do
+      - action: action_get_list_of_performable_actions
+
+
+      

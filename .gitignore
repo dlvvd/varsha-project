@@ -1,0 +1,6 @@
+venv/
+models/
+results/
+train_test_split/
+.idea/
+.rasa/
